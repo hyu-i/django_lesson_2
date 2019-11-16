@@ -1,0 +1,26 @@
+{% extends 'cars/base.html' %}
+
+{% block content %}
+<table class="table mt-3">
+  <thead class="thead-dark">
+    <tr>
+      <th>車番</th>
+      <th>使用県</th>
+      <th>使用開始時期</th>
+      <th>保険期間</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for car in car_list %}
+    <tr>
+      <td><a href="{% url 'cars:detail' car.pk %}">{{ car.number }}</a></td>
+      <td>{{ car.area }}</td>
+      <td>{{ car.start_use }}</td>
+      <td>{{ car.insurance_period }}</td>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% include 'cars/page.html' %}
+
+{% endblock %}
